@@ -2,6 +2,7 @@ from Classes import Money
 
 
 class GameConstants:
+    ticks = 0
     running = True
     store_check = False
     money = 0

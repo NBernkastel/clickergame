@@ -2,6 +2,7 @@ import pygame
 from Constants import GameConstants as gk
 from GameRes import GameResources as res
 from Classes import Sprite
+from util import timer
 
 
 def click_logic(sprite: Sprite):
@@ -29,3 +30,8 @@ def store_logic():
             gk.money -= 100
             gk.drill_counter += 1
             res.Sounds.bye_sound.play()
+
+@timer(60)
+def work():
+    gk.money += gk.pickaxe_counter
+    gk.money += gk.drill_counter * 10

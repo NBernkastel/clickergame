@@ -6,14 +6,14 @@ from Classes import Sprite, Text
 
 class GameResources:
     class Sprites:
-        earth = Sprite('scr/img/earth.png', 150, 150, 250, 250)
+        earth = Sprite('scr/img/earth.png', 150, 150, 200, 200)
         back = Sprite('scr/img/space.jpg', 600, 600, 0, 0)
         store = Sprite('scr/img/store.png', 64, 32, 510, 15)
         scroll = Sprite('scr/img/scroll.png', 350, 550, 130, 20)
         pickaxe = Sprite('scr/img/pickaxe.png', 40, 40, 220, 100)
-        pickaxe2 = Sprite('scr/img/pickaxe.png', 40, 40, 480, 495)
+        pickaxe2 = Sprite('scr/img/pickaxe.png', 40, 40, 450, 495)
         drill = Sprite('scr/img/drill.png', 40, 40, 330, 100)
-        drill2 = Sprite('scr/img/drill.png', 40, 40, 480, 550)
+        drill2 = Sprite('scr/img/drill.png', 40, 40, 450, 550)
 
         own_sprites = pygame.sprite.Group()
         store_sprites = pygame.sprite.Group()
