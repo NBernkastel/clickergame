@@ -10,20 +10,16 @@ import time
 
 class Game:
     clock = pygame.time.Clock()
-    start_time = time.time()
-    current_time = start_time
     def run(self):
         while gk.running:
-            self.current_time = round(time.time() - self.start_time,2)
-            gk.ticks = round(self.current_time * 60)
             gk.mouse_position = tuple([0, 0])
             events()
         # Events
             screen.fill((255, 255, 255))
         # Body
             own_draw()
-            if click_logic(res.Sprites.earth):
-                gk.money += 1
+            if click_logic(res.Sprites.earth) and not gk.store_check:
+                gk.money += 2**gk.click_counter
                 res.Sounds.click_sound.play()
             if click_logic(res.Sprites.store):
                 if gk.store_check:
@@ -34,7 +30,7 @@ class Game:
                 store_logic()
                 store_draw()
             work()
-            print(gk.ticks)
+            gk.time += pygame.time.get_ticks()
             pygame.display.flip()
             self.clock.tick(60)
 

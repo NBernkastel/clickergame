@@ -2,10 +2,12 @@ from Classes import Money
 
 
 class GameConstants:
-    ticks = 0
+    time = 0
     running = True
     store_check = False
-    money = 0
+    money = Money()
     pickaxe_counter = 0
     drill_counter = 0
+    click_counter = 0
+    bomb_counter = 0
     mouse_position = tuple([0, 0])

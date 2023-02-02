@@ -29,50 +29,42 @@ class Text(pygame.font.Font):
 
 
 class Money:
-    digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsuvwxyz"
 
     def __init__(self):
-        self.__moneydec = 0
+        self.__money_dec = 1000000
         self.__money = ''
 
     def __add__(self, other):
-        k = int(other) % 17
-        self.__money += self.digits[k]
+        self.__money_dec += other
+        self.trans()
 
     def __iadd__(self, other):
-        self.__money = self.trans(other)
+        self.__money_dec += other
+        self.trans()
         return self
 
     def __ge__(self, other):
-        if other >= self.__moneydec:
+        if other <= self.__money_dec:
             return True
         else:
             return False
 
     def __isub__(self, other):
-        self.__money = self.trans(-other)
+        self.__money_dec -= other
+        self.trans()
         return self
 
-    def trans(self, other):
-        n = other + self.__moneydec
-        self.__moneydec = n
-        if n == 0:
-            return "0"
-        r = ""
-        while n > 0:
-            k = n % 61  # очередная цифра
-            r = self.digits[int(k)] + r  # приклеим к результату
-            n = n // 61
-        return r
+    def trans(self):
+        if self.__money_dec / 1000000000 >= 1:
+            self.__money = str(round(self.__money_dec / 1000000000, 2)) + 'G'
+        elif self.__money_dec / 1000000 >= 1:
+            self.__money = str(round(self.__money_dec/1000000,2)) + 'M'
+        elif self.__money_dec / 1000 >= 1:
+            self.__money = str(round(self.__money_dec/1000,2)) + 'K'
+        else:
+            self.__money = str(self.__money_dec)
 
     @property
     def money(self):
-        return self.__moneydec
+        return self.__money
 
-
-money = Money()
-money += 1
-
-
-class H:
-    x = 5
